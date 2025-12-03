@@ -1,20 +1,30 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Bankee Dashboard
 
-# Run and deploy your AI Studio app
+Dashboard de santé financière pour TPE, développé avec React, Vite, TailwindCSS et Recharts.
 
-This contains everything you need to run your app locally.
+## Fonctionnalités
 
-View your app in AI Studio: https://ai.studio/apps/drive/1YWz13KOFOCd4OSDEwHfA6--7utaVEwhK
+- **Dashboard Synthétique** : Vue d'ensemble des KPIs (Trésorerie, Impayés).
+- **Trésorerie Interactive** : Suivi des flux et prévisionnel avec simulateur de scénarios.
+- **Gestion Factures** : Suivi des statuts, relance par email et export CSV.
+- **Annuaire Clients** : Scoring et suivi des délais de paiement.
 
-## Run Locally
+## Installation
 
-**Prerequisites:**  Node.js
+1. Cloner le repo
+2. Installer les dépendances :
+   ```bash
+   npm install
+   ```
+3. Lancer en local :
+   ```bash
+   npm run dev
+   ```
 
+## Build pour Production
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Pour déployer sur Vercel ou Netlify :
+
+```bash
+npm run build
+```
