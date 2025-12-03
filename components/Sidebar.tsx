@@ -23,9 +23,9 @@ const Sidebar: React.FC<SidebarProps> = ({ currentView, onNavigate }) => {
       <div className="p-6">
         <div className="flex items-center gap-2 mb-8">
            <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center text-white font-bold text-lg shadow-md shadow-primary-200">
-                K
+                B
            </div>
-           <span className="font-bold text-xl text-gray-900 tracking-tight">Kolecto</span>
+           <span className="font-bold text-xl text-gray-900 tracking-tight">Bankee</span>
         </div>
         
         <nav className="space-y-1">
