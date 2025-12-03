@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <title>Kolecto Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              gray: {
+                50: '#F9FAFB',
+                100: '#F3F4F6',
+                200: '#E5E7EB',
+                300: '#D1D5DB',
+                400: '#9CA3AF',
+                500: '#6B7280',
+                600: '#4B5563',
+                700: '#374151',
+                800: '#1F2937',
+                900: '#111827',
+              },
+              primary: {
+                50: '#EEF2FF',
+                100: '#E0E7FF',
+                500: '#6366F1', // Indigo
+                600: '#4F46E5',
+                700: '#4338CA',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #F9FAFB;
+        -webkit-font-smoothing: antialiased;
+      }
+      /* Custom scrollbar for webkit */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #E5E7EB;
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #D1D5DB;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "recharts": "https://aistudiocdn.com/recharts@^3.5.1",
+    "@phosphor-icons/react": "https://aistudiocdn.com/@phosphor-icons/react@^2.1.10"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
