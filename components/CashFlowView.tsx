@@ -5,7 +5,7 @@ import { Icons } from './Icons';
 import { CashFlowDataPoint } from '../types';
 
 interface CashFlowViewProps {
-  chartData: CashFlowDataPoint[];
+  chartData: Record<string, CashFlowDataPoint[]>;
 }
 
 const TRANSACTIONS = [
@@ -114,7 +114,7 @@ const CashFlowView: React.FC<CashFlowViewProps> = ({ chartData }) => {
                 </div>
             </div>
 
-            <CashFlowChart data={chartData} />
+            <CashFlowChart chartData={chartData} />
 
             <div className="bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
                 <div className="p-6 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">

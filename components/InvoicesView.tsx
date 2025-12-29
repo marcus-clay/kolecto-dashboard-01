@@ -169,7 +169,7 @@ const InvoicesView: React.FC = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="bg-white p-4 rounded-xl border border-red-100 shadow-sm flex items-center justify-between">
            <div>
-              <p className="text-sm text-gray-500 font-medium">Impayés (> 30j)</p>
+              <p className="text-sm text-gray-500 font-medium">Impayés (&gt; 30j)</p>
               <p className="text-2xl font-bold text-red-600 mt-1">{new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(totalOverdue)}</p>
            </div>
            <div className="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center text-red-500">

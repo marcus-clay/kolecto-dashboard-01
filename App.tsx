@@ -10,39 +10,105 @@ import CustomersView from './components/CustomersView';
 import { Icons } from './components/Icons';
 import { FinancialMetric, Alert, CashFlowDataPoint, HealthScoreData } from './types';
 
-// Mock Data
-const MOCK_METRICS: FinancialMetric[] = [
-  {
-    id: 'cash',
-    label: 'Trésorerie Disponible',
-    value: 24500,
-    unit: '€',
-    trendValue: 12,
-    trendDirection: 'up',
-    trendLabel: 'vs mois dernier',
-    status: 'good'
-  },
-  {
-    id: 'overdue',
-    label: 'Factures en Retard',
-    value: 3200,
-    unit: '€',
-    trendValue: 5,
-    trendDirection: 'up', // 'up' in bad metric means it increased (bad)
-    trendLabel: 'vs mois dernier',
-    status: 'warning'
-  },
-  {
-    id: 'receivables',
-    label: 'Encaissements à venir',
-    value: 12800,
-    unit: '€',
-    trendValue: 2,
-    trendDirection: 'neutral',
-    trendLabel: 'vs mois dernier',
-    status: 'neutral'
-  }
-];
+// Mock Data par période
+const MOCK_METRICS_BY_PERIOD: Record<string, FinancialMetric[]> = {
+  'Mois en cours': [
+    {
+      id: 'cash',
+      label: 'Trésorerie Disponible',
+      value: 24500,
+      unit: '€',
+      trendValue: 12,
+      trendDirection: 'up',
+      trendLabel: 'vs mois dernier',
+      status: 'good'
+    },
+    {
+      id: 'overdue',
+      label: 'Factures en Retard',
+      value: 3200,
+      unit: '€',
+      trendValue: 5,
+      trendDirection: 'up',
+      trendLabel: 'vs mois dernier',
+      status: 'warning'
+    },
+    {
+      id: 'receivables',
+      label: 'Encaissements à venir',
+      value: 12800,
+      unit: '€',
+      trendValue: 2,
+      trendDirection: 'neutral',
+      trendLabel: 'vs mois dernier',
+      status: 'neutral'
+    }
+  ],
+  'Trimestre': [
+    {
+      id: 'cash',
+      label: 'Trésorerie Disponible',
+      value: 72500,
+      unit: '€',
+      trendValue: 8,
+      trendDirection: 'up',
+      trendLabel: 'vs trimestre dernier',
+      status: 'good'
+    },
+    {
+      id: 'overdue',
+      label: 'Factures en Retard',
+      value: 8900,
+      unit: '€',
+      trendValue: 3,
+      trendDirection: 'down',
+      trendLabel: 'vs trimestre dernier',
+      status: 'good'
+    },
+    {
+      id: 'receivables',
+      label: 'Encaissements à venir',
+      value: 38400,
+      unit: '€',
+      trendValue: 15,
+      trendDirection: 'up',
+      trendLabel: 'vs trimestre dernier',
+      status: 'good'
+    }
+  ],
+  'Année': [
+    {
+      id: 'cash',
+      label: 'Trésorerie Disponible',
+      value: 285000,
+      unit: '€',
+      trendValue: 22,
+      trendDirection: 'up',
+      trendLabel: 'vs année dernière',
+      status: 'good'
+    },
+    {
+      id: 'overdue',
+      label: 'Factures en Retard',
+      value: 15600,
+      unit: '€',
+      trendValue: 18,
+      trendDirection: 'down',
+      trendLabel: 'vs année dernière',
+      status: 'good'
+    },
+    {
+      id: 'receivables',
+      label: 'Encaissements à venir',
+      value: 142000,
+      unit: '€',
+      trendValue: 28,
+      trendDirection: 'up',
+      trendLabel: 'vs année dernière',
+      status: 'good'
+    }
+  ]
+};
 
 const MOCK_ALERTS: Alert[] = [
   {
@@ -61,14 +127,31 @@ const MOCK_ALERTS: Alert[] = [
   }
 ];
 
-const MOCK_CHART_DATA: CashFlowDataPoint[] = [
-  { date: 'Jan', amount: 18000, expenses: 15000 },
-  { date: 'Fév', amount: 22000, expenses: 16000 },
-  { date: 'Mar', amount: 19000, expenses: 21000 },
-  { date: 'Avr', amount: 24000, expenses: 14000 },
-  { date: 'Mai', amount: 23500, expenses: 18000 },
-  { date: 'Juin', amount: 24500, expenses: 15000 },
-];
+// Données chart par période
+const MOCK_CHART_DATA_BY_PERIOD: Record<string, CashFlowDataPoint[]> = {
+  'Ce semestre': [
+    { date: 'Jan', amount: 18000, expenses: 15000 },
+    { date: 'Fév', amount: 22000, expenses: 16000 },
+    { date: 'Mar', amount: 19000, expenses: 21000 },
+    { date: 'Avr', amount: 24000, expenses: 14000 },
+    { date: 'Mai', amount: 23500, expenses: 18000 },
+    { date: 'Juin', amount: 24500, expenses: 15000 },
+  ],
+  'Cette année': [
+    { date: 'Jan', amount: 18000, expenses: 15000 },
+    { date: 'Fév', amount: 22000, expenses: 16000 },
+    { date: 'Mar', amount: 19000, expenses: 21000 },
+    { date: 'Avr', amount: 24000, expenses: 14000 },
+    { date: 'Mai', amount: 23500, expenses: 18000 },
+    { date: 'Juin', amount: 24500, expenses: 15000 },
+    { date: 'Juil', amount: 26000, expenses: 17000 },
+    { date: 'Août', amount: 21000, expenses: 19000 },
+    { date: 'Sep', amount: 28000, expenses: 16000 },
+    { date: 'Oct', amount: 30000, expenses: 20000 },
+    { date: 'Nov', amount: 27500, expenses: 18500 },
+    { date: 'Déc', amount: 32000, expenses: 22000 },
+  ]
+};
 
 const MOCK_HEALTH: HealthScoreData = {
   score: 72,
@@ -93,21 +176,21 @@ const App: React.FC = () => {
               
               {/* Key Metrics Row */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                 {MOCK_METRICS.map((metric) => (
+                 {MOCK_METRICS_BY_PERIOD[timeRange].map((metric) => (
                    <div key={metric.id} className="h-full">
-                     <MetricCard 
-                        metric={metric} 
+                     <MetricCard
+                        metric={metric}
                         icon={
-                            metric.id === 'cash' ? Icons.Cash : 
+                            metric.id === 'cash' ? Icons.Cash :
                             metric.id === 'overdue' ? Icons.Warning : Icons.Receipt
-                        } 
+                        }
                      />
                    </div>
                  ))}
               </div>
 
               {/* Main Chart */}
-              <CashFlowChart data={MOCK_CHART_DATA} />
+              <CashFlowChart chartData={MOCK_CHART_DATA_BY_PERIOD} />
 
               {/* Quick Actions (Concepts) */}
               <div className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-2xl p-6 shadow-md text-white flex flex-col sm:flex-row items-center justify-between gap-6">
@@ -139,7 +222,7 @@ const App: React.FC = () => {
           </div>
         );
       case 'cash':
-        return <CashFlowView chartData={MOCK_CHART_DATA} />;
+        return <CashFlowView chartData={MOCK_CHART_DATA_BY_PERIOD} />;
       case 'invoices':
         return <InvoicesView />;
       case 'customers':

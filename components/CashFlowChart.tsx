@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { CashFlowDataPoint } from '../types';
 
 interface CashFlowChartProps {
-  data: CashFlowDataPoint[];
+  chartData: Record<string, CashFlowDataPoint[]>;
 }
 
 const CustomTooltip = ({ active, payload, label }: any) => {
@@ -27,17 +27,25 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   return null;
 };
 
-const CashFlowChart: React.FC<CashFlowChartProps> = ({ data }) => {
+const CashFlowChart: React.FC<CashFlowChartProps> = ({ chartData }) => {
+  const [chartPeriod, setChartPeriod] = useState<string>('Ce semestre');
+  const data = chartData[chartPeriod] || [];
+  const periodLabel = chartPeriod === 'Ce semestre' ? '6 mois' : '12 mois';
+
   return (
     <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
       <div className="flex justify-between items-center mb-6">
         <div>
            <h3 className="text-gray-900 font-semibold text-lg">Evolution de la Trésorerie</h3>
-           <p className="text-gray-500 text-sm">Entrées vs Sorties sur 6 mois</p>
+           <p className="text-gray-500 text-sm">Entrées vs Sorties sur {periodLabel}</p>
         </div>
-        <select className="bg-gray-50 border border-gray-200 text-gray-700 text-sm rounded-lg p-2 focus:ring-2 focus:ring-primary-500 focus:outline-none cursor-pointer hover:bg-gray-100 transition-colors">
-            <option>Ce semestre</option>
-            <option>Cette année</option>
+        <select
+          value={chartPeriod}
+          onChange={(e) => setChartPeriod(e.target.value)}
+          className="bg-gray-50 border border-gray-200 text-gray-700 text-sm rounded-lg p-2 focus:ring-2 focus:ring-primary-500 focus:outline-none cursor-pointer hover:bg-gray-100 transition-colors"
+        >
+            <option value="Ce semestre">Ce semestre</option>
+            <option value="Cette année">Cette année</option>
         </select>
       </div>
       
